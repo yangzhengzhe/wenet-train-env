@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.1-cudnn8-runtime-ubuntu18.04
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 ENV CMAKE_FILE=cmake-3.15.7-Linux-x86_64.sh \
     CONDA_FILE=Miniconda3-py38_4.10.3-Linux-x86_64.sh \
     PATH=/root/miniconda3/bin:/usr/local/cmake/bin:$PATH
