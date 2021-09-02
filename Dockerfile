@@ -16,4 +16,4 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
     mkdir $build && cd $build && cmake .. && cmake --build . && \
     apt-get clean
 WORKDIR  /home/
-CMD ["/bin/bash"]
+#CMD ["/bin/bash"]
