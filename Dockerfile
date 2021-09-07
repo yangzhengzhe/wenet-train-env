@@ -13,6 +13,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
     echo "export PATH=/usr/local/cmake/bin:\$PATH" >> /root/.bashrc && \
     git clone https://github.com/wenet-e2e/wenet.git /home/wenet && \
     cd /home/wenet && pip install -r requirements.txt && conda install pytorch==1.6.0 cudatoolkit=10.1 torchaudio=0.6.0 -c pytorch && conda install -y ipython && \
+    pip install flask && \
     mkdir $build && cd $build && cmake -DGRPC=ON .. && cmake --build . && \
     apt-get clean
 WORKDIR  /home/
