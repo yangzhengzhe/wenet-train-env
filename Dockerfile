@@ -3,8 +3,9 @@ ENV CMAKE_FILE=cmake-3.15.7-Linux-x86_64.sh \
     CONDA_FILE=Miniconda3-py38_4.10.3-Linux-x86_64.sh \
     PATH=/root/miniconda3/bin:/usr/local/cmake/bin:$PATH
 ARG build=/home/wenet/runtime/server/x86/build
+ADD kaldi /home/kaldi 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
-    apt-get update && apt-get install --no-install-recommends -y git cmake wget build-essential lsof vim libmad0-dev sox libsox-dev gdb bzip2 unzip zlib1g-dev automake autoconf gfortran libtool subversion python2.7 gawk &&\
+    apt-get update && apt-get install --no-install-recommends -y git cmake wget build-essential lsof vim libmad0-dev sox libsox-dev gdb bzip2 unzip && \
     cd /root && wget https://repo.anaconda.com/miniconda/$CONDA_FILE && sed -i '59d' $CONDA_FILE && sed -i '59i BATCH=1' $CONDA_FILE && \
     sh $CONDA_FILE && > /root/$CONDA_FILE && rm -rf /root/$CONDA_FILE && \
     echo "export PATH=/root/miniconda3/bin:\$PATH" >> /root/.bashrc  && \
@@ -16,5 +17,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
     pip install flask && \
     mkdir $build && cd $build && cmake -DGRPC=ON .. && cmake --build . && \
     apt-get clean
+RUN apt-get install --no-install-recommends -y  zlib1g-dev automake autoconf gfortran libtool subversion python2.7 gawk && \
+    cd /home/kaldi/tools && ./install_liblbfgs.sh && install_srilm.sh name organization e@mail.com
 WORKDIR  /home/
 #CMD ["/bin/bash"]
