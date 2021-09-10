@@ -18,6 +18,6 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
     mkdir $build && cd $build && cmake -DGRPC=ON .. && cmake --build . && \
     apt-get clean
 RUN apt-get install --no-install-recommends -y  zlib1g-dev automake autoconf gfortran libtool subversion python2.7 gawk && \
-    cd /home/kaldi/tools && ./install_liblbfgs.sh && install_srilm.sh name organization e@mail.com
+    cd /home/kaldi/tools && ./install_liblbfgs.sh && ./install_srilm.sh name organization e@mail.com
 WORKDIR  /home/
 #CMD ["/bin/bash"]
