@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile # Dockerfile 位置
+          file: ./Dockerfile.1.10.0 # Dockerfile 位置
           platforms: linux/amd64
           push: true
           #设置推送的仓库
